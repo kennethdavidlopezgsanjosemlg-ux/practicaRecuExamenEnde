@@ -13,7 +13,7 @@ public class CuentaAhorroTest2 {
 		cuentaAhorro = new CuentaAhorro("Test", 123, 0.05);
 		Exception exception = assertThrows( IllegalArgumentException.class, () -> cuentaAhorro.ingresar(-1234) );
 		
-		assertEquals("La cantidad a ingresar no puede ser menor a 0",exception.getMessage());
+		assertEquals("No se pueden ingresar cantidades negativas",exception.getMessage());
 	}
 	
 	@Test

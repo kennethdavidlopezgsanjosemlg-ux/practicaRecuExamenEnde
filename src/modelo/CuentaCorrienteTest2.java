@@ -24,7 +24,7 @@ public class CuentaCorrienteTest2 {
 		
 		Exception exception = assertThrows( IllegalArgumentException.class, () -> cuentaBancaria.reintegrar(-123) );
 		
-		assertEquals("No se pueden retirar cantidades negativas",exception.getMessage());
+		assertEquals("La cantidad a ingresar no puede ser menor a 0",exception.getMessage());
 		
 	}
 	
