@@ -2,35 +2,47 @@ package modelo;
 
 public abstract class CuentaBancaria {
 
-    protected String titular;
-    protected double saldo;
+	protected String titular;
+	protected double saldo;
 
-    public CuentaBancaria(String titular, double saldoInicial) {
-        if (saldoInicial < 0) {
-            throw new IllegalArgumentException("El saldo inicial no puede ser negativo");
-        }
-        this.titular = titular;
-        this.saldo = saldoInicial;
-    }
+	public CuentaBancaria(String titular, double saldoInicial) {
+		if (saldoInicial < 0) {
+			throw new IllegalArgumentException("El saldo inicial no puede ser negativo");
+		}
+		this.titular = titular;
+		this.saldo = saldoInicial;
+	}
 
-    public String getTitular() {
-        return titular;
-    }
+	public abstract double calcularInteres();
 
-    public double getSaldo() {
-        return saldo;
-    }
+	public String getTitular() {
+		return titular;
+	}
 
-    public void ingresar(double cantidad) {
-    	if (cantidad < 0) return;
+	public double getSaldo() {
+		return saldo;
+	}
 
-        saldo += cantidad;
-    }
+	public void ingresar(double cantidad) {
 
-    public void reintegrar(double cantidad) {
-    	if (cantidad < 0 && cantidad > this.saldo) return;
+		if (cantidad < 0) {
+			throw new IllegalArgumentException("La cantidad a ingresar no puede ser menor a 0");
+		}
 
-        saldo -= cantidad;
-    }
+		saldo += cantidad;
+	}
+
+	public void reintegrar(double cantidad) {
+
+		if (cantidad < 0) {
+			throw new IllegalArgumentException("La cantidad a ingresar no puede ser menor a 0");
+		}
+
+		if (cantidad > saldo) {
+			throw new IllegalArgumentException("No hay suficiente saldo para realizar la operación");
+		}
+
+		saldo -= cantidad;
+	}
 
 }
