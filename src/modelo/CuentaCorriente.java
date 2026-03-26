@@ -26,7 +26,7 @@ public class CuentaCorriente extends CuentaBancaria {
 	 */
 	@Override
 	public double calcularInteres() {
-		return comision;
+		return -comision;
 	}
 
 }
