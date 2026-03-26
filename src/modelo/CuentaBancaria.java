@@ -19,17 +19,12 @@ public abstract class CuentaBancaria {
 		return titular;
 	}
 
-	public double getSaldo() {
-		return saldo;
-	}
-
 	public void ingresar(double cantidad) {
-
 		if (cantidad < 0) {
-			throw new IllegalArgumentException("La cantidad a ingresar no puede ser menor a 0");
+			throw new IllegalArgumentException("No se pueden ingresar cantidades negativas");
 		}
 
-		saldo += cantidad;
+		this.saldo = this.saldo + cantidad;
 	}
 
 	public void reintegrar(double cantidad) {
