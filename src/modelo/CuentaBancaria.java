@@ -22,11 +22,13 @@ public abstract class CuentaBancaria {
     }
 
     public void ingresar(double cantidad) {
+    	if (cantidad < 0) return;
 
         saldo += cantidad;
     }
 
     public void reintegrar(double cantidad) {
+    	if (cantidad < 0 && cantidad > this.saldo) return;
 
         saldo -= cantidad;
     }
